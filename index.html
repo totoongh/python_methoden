@@ -22,14 +22,24 @@ pre{position:relative}.copy{position:absolute;top:6px;right:6px;font:9pt sans-se
 <li>Ihr arbeitet <b>zu zweit</b> an einem Rechner. Wechselt euch ab: Eine Person tippt, die andere liest mit und denkt mit. Tauscht regelmäßig, spätestens nach jedem Teil. Besprecht jede Aufgabe gemeinsam, bevor ihr die Antwort aufschreibt.</li>
 <li>Legt für jeden Teil eine <b>eigene Datei</b> an, zum Beispiel <code>teil0.py</code>, <code>teil1.py</code> und so weiter.</li>
 <li>Führt <b>jedes Beispiel selbst aus</b>. Nur lesen reicht nicht. Ihr lernt am meisten, wenn ihr seht, was wirklich passiert.</li>
-<li>Die Antworten auf die Aufgaben schreibt ihr <b>als Kommentar in den Code</b>. Das sieht zum Beispiel so aus:</li>
+<li>Es gibt zwei Arten von Aufgaben:
+<ul>
+<li><b>Programmieraufgaben</b> (zum Beispiel „Schreibt eine Funktion …“ oder „Ändert das Programm …“): Hier schreibt ihr ganz normalen Python-Code, der ausgeführt wird.</li>
+<li><b>Fragen</b> (zum Beispiel „Was passiert?“ oder „Erklärt, warum …“): Die Antwort schreibt ihr <b>als Kommentar</b> in dieselbe Datei. Kommentare werden von Python nicht ausgeführt.</li>
 </ul>
-<pre># Aufgabe 1: Hier steht eine kurze Antwort in einer Zeile.
+Das sieht zum Beispiel so aus:</li>
+</ul>
+<pre># Aufgabe 1: Das Programm gibt eine Begrüßung aus.
 
 '''
-Aufgabe 2: Hier steht eine längere Antwort.
-Sie kann über mehrere Zeilen gehen.
-'''</pre></div>
+Aufgabe 2: Eine längere Antwort kann über
+mehrere Zeilen gehen. Dafür nehmt ihr drei Anführungszeichen.
+'''
+
+# Aufgabe 3: Programmieraufgabe, hier steht ganz normaler Code
+alter = 20
+if alter &gt;= 18:
+    print("Volljährig")</pre></div>
 
 <h2>Teil 0: Ein nerviges Programm</h2>
 <p>Ein Sportverein möchte ein kleines Programm für die Anmeldung. Das Programm fragt nach dem Alter, nach den Trainingsstunden und nach der Körpergröße. Wenn man etwas Falsches eingibt, fragt es noch einmal nach. Am Ende zeigt es alles zusammen an.</p>
