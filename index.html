@@ -1,0 +1,212 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><title>Funktionen (Methoden)</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+@page{size:A4;margin:18mm 20mm}
+body{max-width:800px;margin:0 auto;padding:24px 16px;font:10.5pt/1.45 "Helvetica Neue",Arial,sans-serif;color:#222}
+.kopf{display:flex;justify-content:space-between;color:#666;font-size:9.5pt;border-bottom:1px solid #ccc;padding-bottom:4px}
+h1.t{font-size:21pt;color:#2F5597;margin:14px 0 2px}
+.sub{font-style:italic;color:#555;margin:0 0 10px}
+h2{font-size:13.5pt;color:#2F5597;margin:20px 0 6px;border-bottom:2px solid #2F5597;padding-bottom:2px;break-after:avoid}
+h3{font-size:11pt;margin:12px 0 4px}
+.box ul,.box ol{margin:4px 0}.box pre{background:#fff}.box{background:#E8F0FA;border-left:4px solid #2F5597;padding:7px 10px;margin:10px 0}
+pre{background:#F3F3F3;border:1px solid #ddd;border-radius:4px;padding:7px 10px;font:9.5pt/1.4 Menlo,Consolas,monospace;margin:6px 0 10px;break-inside:avoid}
+code{font:9.5pt Menlo,Consolas,monospace;background:#F3F3F3;padding:0 3px}
+ol,ul{padding-left:22px;margin:6px 0}li{margin:4px 0}
+ul.check{list-style:none;padding-left:4px}ul.check li:before{content:"✓  ";color:#2F5597}
+.q{break-inside:avoid;margin-bottom:6px}
+.l{border-bottom:1px solid #aaa;height:22px}
+.sec{break-inside:avoid}
+pre{position:relative}.copy{position:absolute;top:6px;right:6px;font:9pt sans-serif;padding:3px 9px;border:1px solid #bbb;border-radius:4px;background:#fff;cursor:pointer;color:#333}.copy:hover{background:#E8F0FA}
+</style><body>
+<h1 class="t">Funktionen (Methoden)</h1>
+<div class="box"><b>So arbeitet ihr:</b>
+<ul>
+<li>Ihr arbeitet <b>zu zweit</b> an einem Rechner. Wechselt euch ab: Eine Person tippt, die andere liest mit und denkt mit. Tauscht regelmäßig, spätestens nach jedem Teil. Besprecht jede Aufgabe gemeinsam, bevor ihr die Antwort aufschreibt.</li>
+<li>Legt für jeden Teil eine <b>eigene Datei</b> an, zum Beispiel <code>teil0.py</code>, <code>teil1.py</code> und so weiter.</li>
+<li>Führt <b>jedes Beispiel selbst aus</b>. Nur lesen reicht nicht. Ihr lernt am meisten, wenn ihr seht, was wirklich passiert.</li>
+<li>Die Antworten auf die Aufgaben schreibt ihr <b>als Kommentar in den Code</b>. Das sieht zum Beispiel so aus:</li>
+</ul>
+<pre># Aufgabe 1: Hier steht eine kurze Antwort in einer Zeile.
+
+'''
+Aufgabe 2: Hier steht eine längere Antwort.
+Sie kann über mehrere Zeilen gehen.
+'''</pre></div>
+
+<h2>Teil 0: Ein nerviges Programm</h2>
+<p>Ein Sportverein möchte ein kleines Programm für die Anmeldung. Das Programm fragt nach dem Alter, nach den Trainingsstunden und nach der Körpergröße. Wenn man etwas Falsches eingibt, fragt es noch einmal nach. Am Ende zeigt es alles zusammen an.</p>
+<p>Jemand hat das Programm schon geschrieben. Es funktioniert, aber es ist nicht gut gemacht. In diesem Teil findet ihr selbst heraus, warum.</p>
+<pre>print("==============================")
+print("  Anmeldung Sportkurs")
+print("==============================")
+
+alter = input("Wie alt bist du? ")
+while not alter.isdigit() or int(alter) &lt; 6 or int(alter) &gt; 99:
+    print("Bitte eine Zahl zwischen 6 und 99 eingeben.")
+    alter = input("Wie alt bist du? ")
+alter = int(alter)
+
+print("==============================")
+print("  Training")
+print("==============================")
+
+stunden = input("Wie viele Stunden pro Woche? ")
+while not stunden.isdigit() or int(stunden) &lt; 1 or int(stunden) &gt; 20:
+    print("Bitte eine Zahl zwischen 1 und 20 eingeben.")
+    stunden = input("Wie viele Stunden pro Woche? ")
+stunden = int(stunden)
+
+print("==============================")
+print("  Körpergröße")
+print("==============================")
+
+groesse = input("Wie groß bist du in cm? ")
+while not groesse.isdigit() or int(groesse) &lt; 100 or int(stunden) &gt; 230:
+    print("Bitte eine Zahl zwischen 100 und 230 eingeben.")
+    groesse = input("Wie groß bist du in cm? ")
+groesse = int(groesse)
+
+print("==============================")
+print("  Zusammenfassung")
+print("==============================")
+print("Alter:", alter, "| Stunden:", stunden, "| Größe:", groesse)</pre>
+<ol>
+<li class="q"><b>Code lesen:</b> Führt das Programm noch <b>nicht</b> aus. Kopiert es in eine neue Datei <code>teil0.py</code> und lest es gemeinsam Zeile für Zeile durch. Beschreibt dann als Kommentar in eigenen Worten, was das Programm macht:<ul><li>Was wird auf dem Bildschirm angezeigt?</li><li>Wonach wird gefragt?</li><li>Was passiert, wenn man eine falsche Eingabe macht? Welche Zeilen sorgen dafür?</li><li>Welche Teile des Codes sehen fast gleich aus?</li></ul></li>
+<li class="q"><b>Ausprobieren:</b> Führt das Programm jetzt aus. Gebt zuerst normale Werte ein. Probiert danach auch falsche Eingaben aus, zum Beispiel Buchstaben (<code>abc</code>) oder eine viel zu große Zahl. Stimmt eure Beschreibung aus Aufgabe 1? Ergänzt sie, wenn nötig.</li>
+<li class="q"><b>Fehler suchen:</b> Im Programm steckt ein Fehler. Startet das Programm und gebt als Körpergröße <code>500</code> ein. Eigentlich müsste das Programm sagen, dass die Zahl zu groß ist. Tut es das?<br>Sucht den Fehler und verbessert ihn. Tipp: Vergleicht die drei <code>while</code>-Zeilen genau miteinander. Der Fehler ist entstanden, weil jemand Code kopiert und dann nicht überall angepasst hat.</li>
+<li class="q"><b>Änderung 1:</b> Dem Verein gefallen die Überschriften nicht. Die Linien sollen aus Sternchen <code>*</code> bestehen statt aus Gleichheitszeichen <code>=</code>. Außerdem sollen sie 40 Zeichen lang sein. Ändert das Programm.<br><i>Zählt danach: In wie vielen Zeilen musstet ihr etwas ändern? Schreibt die Zahl als Kommentar auf.</i></li>
+<li class="q"><b>Änderung 2:</b> Wenn jemand etwas Falsches eingibt, soll das Programm zusätzlich anzeigen, was eingegeben wurde. Beispiel: Jemand tippt <code>abc</code>, dann soll erscheinen: <code>Du hast "abc" eingegeben.</code> Ändert das Programm.<br><i>Zählt wieder: In wie vielen Zeilen musstet ihr etwas ändern?</i></li>
+<li class="q"><b>Änderung 3:</b> Der Verein möchte jetzt auch das Gewicht wissen. Erlaubt sind 30 bis 200 kg. Die Frage soll eine eigene Überschrift bekommen, genau wie die anderen. Baut das ein.<br><i>Beschreibt danach: Wie seid ihr vorgegangen? Was könnte dabei leicht schiefgehen? (Denkt an den Fehler aus Aufgabe 3.)</i></li>
+<li class="q"><b>Nachdenken:</b> Was war an diesen Änderungen nervig? Stellt euch vor, ihr könntet Python einen eigenen, neuen Befehl beibringen. Zum Beispiel einen Befehl <code>ueberschrift("Training")</code>, der die Überschrift mit den Linien darüber und darunter ausgibt.<br>Welche <b>zwei</b> eigenen Befehle würden euch bei diesem Programm am meisten helfen? Was müsste man den Befehlen jeweils in die Klammern schreiben?</li>
+</ol>
+<div class="box"><b>Genau dafür gibt es Funktionen.</b> Eine Funktion ist ein eigener Befehl, den ihr selbst schreibt. Ihr gebt ihm einen Namen und könnt ihn danach so oft benutzen, wie ihr wollt. Wollt ihr etwas ändern, ändert ihr es nur an einer Stelle.<br>Vielleicht habt ihr auch schon das Wort <b>Methode</b> gehört. In Python ist eine Methode eine Funktion, die zu einem Wert gehört und mit einem Punkt aufgerufen wird, zum Beispiel <code>alter.isdigit()</code>. Hier schreibt ihr erst einmal ganz normale Funktionen.<br>In Teil 1 bis 3 lernt ihr, wie man Funktionen schreibt. In Teil 4 verbessert ihr damit das Programm aus Teil 0.</div>
+
+<h2>Teil 1: Die erste eigene Funktion</h2>
+<p>Tippt das folgende Programm ab oder kopiert es. Führt es dann aus.</p>
+<pre>def begruessung():
+    print("Hallo!")
+    print("Willkommen im Kurs.")
+
+begruessung()
+begruessung()</pre>
+<p>So lest ihr das Programm: Die Zeile mit <code>def</code> sagt Python: „Ich bringe dir jetzt einen neuen Befehl bei. Er heißt <code>begruessung</code>.“ Die eingerückten Zeilen darunter gehören zu diesem Befehl. Mit <code>begruessung()</code> wird der Befehl dann benutzt. Man sagt dazu: Die Funktion wird <b>aufgerufen</b>.</p>
+<ol>
+<li class="q">Wie oft steht „Hallo!“ in der Ausgabe? Warum genau so oft?</li>
+<li class="q">Löscht die beiden letzten Zeilen (<code>begruessung()</code>) und startet das Programm noch einmal. Was passiert jetzt? Erklärt, warum. Macht die Änderung danach wieder rückgängig.</li>
+<li class="q">Nehmt bei <code>print("Hallo!")</code> die Einrückung weg, sodass die Zeile ganz links steht. Was passiert? Was sagt euch das über die Einrückung? Macht auch diese Änderung danach wieder rückgängig.</li>
+<li class="q"><code>def</code> ist eine Abkürzung für ein englisches Wort. Findet heraus, für welches. Tipp: Es hat mit dem deutschen Wort „definieren“ zu tun. Erklärt in einem Satz, warum der Name gut passt.</li>
+</ol>
+<p>Jetzt bekommt die Funktion einen Wert mit. In den Klammern bei <code>def</code> steht dafür ein Name, hier <code>name</code>:</p>
+<pre>def begruessung(name):
+    print("Hallo", name)
+
+begruessung("Ada")
+begruessung("Alan")</pre>
+<ol start="5">
+<li class="q">Führt das Programm aus. Welcher Wert steht beim ersten Aufruf in <code>name</code>, welcher beim zweiten?</li>
+<li class="q">Sucht im Internet nach den Begriffen <b>Parameter</b> und <b>Argument</b> (zum Beispiel „Python Parameter Argument Unterschied“). Erklärt in eigenen Worten den Unterschied. Schreibt dazu, was im Beispiel oben der Parameter ist und was die Argumente sind.</li>
+<li class="q">Schreibt selbst eine Funktion <code>vorstellen(name, alter)</code>. Sie soll zum Beispiel ausgeben: <code>Ich heiße Ada und bin 36 Jahre alt.</code> Ruft sie zweimal mit verschiedenen Werten auf.</li>
+<li class="q">Ruft eure Funktion jetzt nur mit einem Wert auf: <code>vorstellen("Ada")</code>. Was passiert? Lest die Fehlermeldung und erklärt sie.</li>
+</ol>
+
+<h2>Teil 2: return oder print?</h2>
+<p>Hier seht ihr zwei Funktionen, die fast gleich aussehen. Die erste benutzt <code>print()</code>, die zweite <code>return</code>.</p>
+<p><b>Wichtig:</b> Führt den Code noch <b>nicht</b> aus. Überlegt erst, was ausgegeben wird, und schreibt eure Vermutung als Kommentar auf. Führt ihn erst danach aus und vergleicht.</p>
+<pre>def quadrat_a(x):
+    print(x * x)
+
+def quadrat_b(x):
+    return x * x
+
+a = quadrat_a(4)
+b = quadrat_b(4)
+print("a:", a)
+print("b:", b)
+print(quadrat_b(3) + quadrat_b(2))</pre>
+<ol>
+<li class="q">Stimmt eure Vermutung? Was war anders als gedacht?</li>
+<li class="q">Bei <code>a</code> steht <code>None</code>. <code>None</code> bedeutet in Python „nichts“. Warum hat <code>a</code> keinen Wert bekommen, <code>b</code> aber schon?</li>
+<li class="q">Erklärt in eigenen Worten den Unterschied: <code>print()</code> zeigt etwas auf dem Bildschirm an. Was macht <code>return</code>?</li>
+<li class="q">Schreibt in <code>quadrat_b</code> unter die Zeile mit <code>return</code> noch ein <code>print("Fertig")</code>. Wird „Fertig“ angezeigt? Was lernt ihr daraus über <code>return</code>?</li>
+</ol>
+
+<h2>Teil 3: Wo gilt eine Variable?</h2>
+<p>Führt dieses Programm aus. Achtung: Es wird mit einer Fehlermeldung enden. Das ist Absicht.</p>
+<pre>def verdopple(x):
+    ergebnis = x * 2
+    x = 100
+    return ergebnis
+
+zahl = 5
+print(verdopple(zahl))
+print(zahl)
+print(ergebnis)</pre>
+<ol>
+<li class="q">Welcher Wert wird für <code>zahl</code> ausgegeben? In der Funktion steht doch <code>x = 100</code>. Hat das den Wert von <code>zahl</code> verändert?</li>
+<li class="q">Die letzte Zeile erzeugt eine Fehlermeldung. Schreibt die Fehlermeldung ab und erklärt sie. Die Variable <code>ergebnis</code> gibt es doch in der Funktion. Warum kennt Python sie hier nicht?<br>Tipp: Sucht nach „Python lokale Variable“.</li>
+</ol>
+<div class="box"><b>Merksatz:</b> Schreibt als Kommentar einen eigenen Merksatz mit zwei Teilen:<br>1. Wo kann man eine Variable benutzen, die <i>in</i> einer Funktion angelegt wurde?<br>2. Wie bekommt man trotzdem einen Wert aus der Funktion heraus?</div>
+
+<h2>Teil 4: Selbst Funktionen schreiben</h2>
+<p>Schreibt die folgenden Funktionen. Ruft jede Funktion <b>mindestens dreimal</b> mit verschiedenen Werten auf und gebt das Ergebnis mit <code>print()</code> aus. So prüft ihr, ob sie richtig funktioniert. Probiert auch Sonderfälle aus, zum Beispiel <code>0</code> bei Zahlen oder einen leeren Text <code>""</code> bei <code>zaehle_vokale</code>. Ausnahme: <code>lies_zahl</code> testet ihr, indem ihr beim Ausführen verschiedene richtige und falsche Eingaben tippt.</p>
+<p>Alle Funktionen sollen ihr Ergebnis mit <code>return</code> zurückgeben, nicht selbst mit <code>print()</code> ausgeben.</p>
+<ol>
+<li class="q"><code>ist_gerade(zahl)</code> prüft, ob eine Zahl gerade ist. Sie gibt <code>True</code> oder <code>False</code> zurück.<br>Beispiel: <code>ist_gerade(4)</code> ergibt <code>True</code>, <code>ist_gerade(7)</code> ergibt <code>False</code>.<br>Tipp: Der Operator <code>%</code> gibt den Rest einer Division. <code>7 % 2</code> ergibt <code>1</code>, denn 7 geteilt durch 2 ist 3 Rest 1.</li>
+<li class="q"><code>maximum(a, b, c)</code> bekommt drei Zahlen und gibt die größte zurück. Benutzt dafür <code>if</code>, nicht den fertigen Befehl <code>max()</code>.<br>Beispiel: <code>maximum(3, 9, 5)</code> ergibt <code>9</code>.</li>
+<li class="q"><code>summe_bis(n)</code> rechnet alle Zahlen von 1 bis n zusammen.<br>Beispiel: <code>summe_bis(4)</code> ergibt <code>10</code>, denn 1 + 2 + 3 + 4 = 10.</li>
+<li class="q"><code>fakultaet(n)</code> multipliziert alle Zahlen von 1 bis n miteinander.<br>Beispiel: <code>fakultaet(5)</code> ergibt <code>120</code>, denn 1 · 2 · 3 · 4 · 5 = 120.<br>Achtung: <code>fakultaet(0)</code> ergibt in der Mathematik <code>1</code>.</li>
+<li class="q"><code>zaehle_vokale(text)</code> zählt, wie viele Vokale (a, e, i, o, u) in einem Text vorkommen.<br>Beispiel: <code>zaehle_vokale("Banane")</code> ergibt <code>3</code>. Großbuchstaben zählen auch: <code>zaehle_vokale("Auto")</code> ergibt <code>3</code>.</li>
+<li class="q"><code>lies_zahl(frage, minimum, maximum)</code> stellt eine Frage mit <code>input()</code>. Sie fragt so lange nach, bis eine ganze Zahl zwischen <code>minimum</code> und <code>maximum</code> eingegeben wird. Dann gibt sie diese Zahl als <code>int</code> zurück.<br>Beispiel: <code>alter = lies_zahl("Wie alt bist du? ", 6, 99)</code><br>Tipp: Schaut euch an, wie die Schleifen in Teil 0 aufgebaut sind.</li>
+<li class="q">Eine Funktion darf eine andere Funktion benutzen. Schreibt zuerst <code>ist_teilbar(a, b)</code>. Sie gibt <code>True</code> zurück, wenn a ohne Rest durch b teilbar ist (Tipp: wieder <code>%</code>). Schreibt danach <code>ist_schaltjahr(jahr)</code> und benutzt darin <code>ist_teilbar</code>.<br>Regel: Ein Jahr ist ein Schaltjahr, wenn es durch 4 teilbar ist. Ausnahme: Ist es durch 100 teilbar, ist es kein Schaltjahr. Ausnahme von der Ausnahme: Ist es durch 400 teilbar, ist es doch ein Schaltjahr.<br>Beispiel: 2024 ja, 1900 nein, 2000 ja.</li>
+</ol>
+<div class="box"><b>Zurück zu Teil 0:</b> Jetzt verbessert ihr das nervige Programm vom Anfang.
+<ol>
+<li>Legt eine neue Datei <code>teil0_neu.py</code> an.</li>
+<li>Schreibt eine Funktion <code>ueberschrift(titel)</code>, die eine Überschrift mit Linien darüber und darunter ausgibt.</li>
+<li>Schreibt das Anmeldeprogramm neu. Benutzt dabei <code>ueberschrift</code> und eure Funktion <code>lies_zahl</code> aus Teil 4, Aufgabe 6. Kopiert sie dafür in die neue Datei.</li>
+<li>Macht jetzt noch einmal die drei Änderungen aus Teil 0 (Sternchen, Anzeige der falschen Eingabe, Frage nach dem Gewicht).</li>
+<li><i>Zählt wieder, in wie vielen Zeilen ihr etwas ändern musstet. Vergleicht mit euren Zahlen aus Teil 0.</i></li>
+</ol></div>
+
+<h2>Teil 5: Projekt Zahlenraten zu zweit</h2>
+<p>Ihr programmiert ein Ratespiel für zwei Personen. So läuft es ab:</p>
+<ol>
+<li>Person A gibt eine geheime Zahl zwischen 1 und 100 ein.</li>
+<li>Danach gibt das Programm 50 leere Zeilen aus. So rutscht die Zahl nach oben aus dem Bild und Person B kann sie nicht sehen.</li>
+<li>Person B rät. Nach jedem Tipp sagt das Programm „zu groß“, „zu klein“ oder „richtig“.</li>
+<li>Wenn die Zahl erraten ist, zeigt das Programm an, wie viele Versuche Person B gebraucht hat.</li>
+</ol>
+<p><b>Vorgabe:</b> Schreibt das Programm mit Funktionen. Ganz unten steht dann nur noch ein kurzer Hauptteil, der die Funktionen aufruft. Diese Funktionen braucht ihr:</p>
+<ul>
+<li><code>lies_zahl(frage, minimum, maximum)</code>: Die habt ihr schon aus Teil 4. Kopiert sie einfach herein.</li>
+<li><code>verdecke_bildschirm()</code>: gibt 50 leere Zeilen aus.</li>
+<li><code>bewerte_tipp(tipp, geheim)</code>: vergleicht den Tipp mit der geheimen Zahl und gibt <code>"zu groß"</code>, <code>"zu klein"</code> oder <code>"richtig"</code> zurück.</li>
+<li><code>spiele_runde()</code>: spielt eine ganze Runde und gibt am Ende die Anzahl der Versuche zurück.</li>
+</ul>
+<p><b>Erweiterung:</b> Nach jeder Runde fragt das Programm: „Nochmal? (j/n)“. Bei <code>j</code> startet eine neue Runde. Das Programm merkt sich die beste Runde, also die mit den wenigsten Versuchen, und zeigt sie am Ende an.</p>
+
+<h2>Teil 6: Zusatzaufgaben für Schnelle</h2>
+<ul>
+<li><b>Standardwerte:</b> Man kann Parametern einen Wert vorgeben, der benutzt wird, wenn man nichts angibt. Beispiel: <code>def lies_zahl(frage, minimum=1, maximum=100):</code><br>Probiert aus, was passiert, wenn ihr <code>lies_zahl("Zahl? ")</code> ohne minimum und maximum aufruft.</li>
+<li><b>Primzahlen:</b> Schreibt <code>ist_primzahl(n)</code>. Eine Primzahl ist nur durch 1 und sich selbst teilbar (zum Beispiel 2, 3, 5, 7, 11). Die 1 ist keine Primzahl. Schreibt danach <code>gib_primzahlen_aus(bis)</code>, die alle Primzahlen bis zu einer Zahl ausgibt. Benutzt darin <code>ist_primzahl</code>.</li>
+<li><b>Rekursion:</b> Eine Funktion kann sich auch selbst aufrufen. Sucht nach „Python Rekursion Fakultät“ und schreibt <code>fakultaet(n)</code> ein zweites Mal, diesmal ohne Schleife.</li>
+<li><b>Mehrere Rückgabewerte:</b> Mit <code>return a, b</code> gibt eine Funktion zwei Werte zurück. Schreibt <code>min_und_max(a, b, c)</code>, die die kleinste und die größte Zahl zurückgibt, ohne <code>min()</code> und <code>max()</code> zu benutzen. Probiert aus: <code>klein, gross = min_und_max(4, 9, 1)</code></li>
+</ul>
+
+<h2>Zum Abschluss: Rückblick</h2>
+<p>Legt dafür eine Datei <code>rueckblick.py</code> an und beantwortet die Fragen dort als Kommentar.</p>
+<ol>
+<li class="q">Vergleicht eure beiden Versionen des Anmeldeprogramms (<code>teil0.py</code> und <code>teil0_neu.py</code>). Was ist durch die Funktionen besser geworden? Seht ihr auch Nachteile?</li>
+<li class="q">Was war heute für euch am schwierigsten? Was habt ihr noch nicht ganz verstanden?</li>
+</ol>
+<script>
+document.querySelectorAll('pre').forEach(pre=>{
+  const code=pre.textContent;
+  const b=document.createElement('button');b.className='copy';b.textContent='Kopieren';
+  b.onclick=()=>{
+    const done=()=>{b.textContent='Kopiert';setTimeout(()=>b.textContent='Kopieren',1500)};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(code).then(done)}
+    else{const t=document.createElement('textarea');t.value=code;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();done()}
+  };
+  pre.appendChild(b);
+});
+</script>
+</body></html>
